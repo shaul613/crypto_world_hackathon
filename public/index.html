@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <form class="" action="/home" method="post">
-      <label for="username">Username</label>
-      <input type="text" name="username" value="">
-      <label for="password">Password</label>
-      <input type="password" name="password" value="">
-      <button type="submit" name="button">Log In</button>
-    </form>
-    <p>
-      <small>Not a member yet?</small>
+    <nav class="navbar-container container">
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+            <li id="middle"><h1>Crypto Currency Simulator</h1></li>
+          </ul>
+        </div>
+      </nav>
+      <form class="" action="/home" method="post">
+        <p>
+          <label for="username">Username</label>
+          <input type="text" name="username" value="">
+        </p>
+        <p>
+          <label for="password">Password</label>
+          <input type="password" name="password" value="">
+        </p>
+        <p>
+          <button type="submit" name="button">Log In</button>
+        </p>
+      </form>
       <br>
-      <button type="button" name="button"> <a href="/signup">Sign Up</a> </button>
-    </p>
-
+      <p>
+        <small>Not a member yet?</small>
+        <br>
+        <button type="button" name="button"> <a href="/signup">Sign Up</a> </button>
+      </p>
   </body>
 </html>
