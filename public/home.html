@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar-container container">
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+            <li id="middle"><h1>Crypto Currency Simulator</h1></li>
+            <li class="navbar-item" id="left"><a class="navbar-link" href="/">Logout</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="body"class="content">
+        <div id="flex_container">
+            <h1 id="usdb" class="display"></h1><br>
+            <h1 id="btcb" class="display"></h1><br>
+            <h1 id="ethb" class="display"></h1><br>
+        </div>
+    <section>
+        <div id="transaction_container" >
+            <form id="transaction" action="/home" method="post">
+                <p class="transaction">From</p>
+                <select class="transaction" name="crypto1" id="cryptocode1">
+                <option value="USD">USD</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                </select>
+                <p class="transaction">To</p>
+                <select class="transaction" name="crypto2" id="cryptocode2">
+                <option value="USD">USD</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                </select><br>
+                <input class="transaction" id="input_num" name="base_amount" type="number" required><br>
+                <input class="transaction" type="hidden" id="dontdisplay" name="des_amount">
+                <!-- set vaulue = api res -->
+                <button id="submitbuy" type="submit">submit</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+
+    </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

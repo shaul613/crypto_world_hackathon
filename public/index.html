@@ -7,23 +7,24 @@
   </head>
   <body>
     <nav class="navbar-container container">
-        <div id="navbar-menu" aria-labelledby="navbar-toggle">
-          <ul class="navbar-links">
-            <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
-            <li id="middle"><h1>Crypto Currency Simulator</h1></li>
-          </ul>
-        </div>
-      </nav>
-      <form class="" action="/home" method="post">
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+          <li id="middle"><h1>Crypto Currency Simulator</h1></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="login_continer">
+      <form id="login" action="/home" method="post" class="form">
         <p>
-          <label for="username">Username</label>
+          <label for="username"><h3>Username</h3></label>
           <input type="text" name="username" value="">
         </p>
         <p>
-          <label for="password">Password</label>
+          <label for="password"><h3>Password</h3></label>
           <input type="password" name="password" value="">
         </p>
         <p>
@@ -36,5 +37,6 @@
         <br>
         <button type="button" name="button"> <a href="/signup">Sign Up</a> </button>
       </p>
+    </div>
   </body>
 </html>
