@@ -42,27 +42,27 @@ function saveUser(firstName, lastName, email, username, password) {
       .returning("*");
     }
 
-function getData(poi){
-  console.log(poi);
+function getData(user){
+  console.log(user);
   return db('users')
-  .select('*')
-  .where({user_id:poi})
+  .select('btc_balance', 'eth_balance', 'usd_balance')
+  .where({user_id:user})
 }
 
-function getData1(res, req){
-  const {user_id} = req.params;
-  getData(user_id)
-  .then(data => {
-    res.json(data)
-  })
-  .catch(err => {
-    console.log(err);
-  })
+function updateBalance(base, desired, baseAmount, desAmount, user){
+  return db("users")
+  .where({user_id:user})
+  .update({
+    base:baseAmount,
+    desired:desAmount
+  });
 }
+
 module.exports = {
   addLogin,
   checkUserId,
   checkPassword,
   saveUser,
-  getData1,
+  getData,
+  updateBalance,
 }
