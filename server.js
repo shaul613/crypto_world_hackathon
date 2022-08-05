@@ -57,16 +57,22 @@ app.post('/home', async (req, res) => {
   if(success){
     console.log('show the page');
     res.redirect('/portfolio');
+    app.get('/home/userinfo', (req, res) => {
+      getData(userId)
+      .then(data => {
+        res.json(data);
+      })
+    })
   }
 })
 
-app.get('/home/:id', (req, res) => {
-  const id = req.params.id;
-  getData(id)
-  .then(data => {
-    res.json(data);
-  })
-})
+// app.get('/home/:id', (req, res) => {
+//   const id = req.params.id;
+//   getData(id)
+//   .then(data => {
+//     res.json(data);
+//   })
+// })
 
 app.get('/portfolio', (req, res) => {
   res.sendFile(__dirname+'/public/home.html');

@@ -45,7 +45,8 @@ function saveUser(firstName, lastName, email, username, password) {
 function getData(user){
   console.log(user);
   return db('users')
-  .select('btc_balance', 'eth_balance', 'usd_balance')
+  // .select('btc_balance', 'eth_balance', 'usd_balance')
+  .select('*')
   .where({user_id:user})
 }
 

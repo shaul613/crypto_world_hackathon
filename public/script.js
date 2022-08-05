@@ -1,6 +1,6 @@
 
 async function func(){
-  const res = await fetch(`home/1`);
+  const res = await fetch(`home/userinfo`);
   const data = await res.json();
   // console.log(data[0]);
   return data[0];
