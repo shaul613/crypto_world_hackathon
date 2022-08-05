@@ -40,7 +40,7 @@ ul{
     padding-right:25px;
     padding-left:25px;
     list-style: none;
-    font-size: 25px;
+    font-size: 40px;
 
 }
 .navbar-item:hover{
@@ -52,11 +52,11 @@ padding-top: 32px;
     background-color: darkblue;
 }
 #middle{
-    margin-top: 5px;
+    margin-top: 30px;
     position: relative;
     margin-left: 10vw;
     list-style: none;
-    font-size: 20px;
+    font-size: 28px;
     
     
     text-decoration:none;
@@ -68,7 +68,7 @@ padding-top: 32px;
     /* height: 90px; */
     margin-left: 10vw;
     /* padding: 5px; */
-    /* margin-top: 15px; */
+    /* margin-top: 1px; */
 
 
 }
