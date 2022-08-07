@@ -16,72 +16,6 @@ async function func() {
   // console.log(data[0]);
   return data[0];
 }
-const sendLogin = () => {
-  const username = req.body.username; //username provided
-  const password = req.body.password; //password provided
-
-  fetch("/portfolio", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-  })
-    .then((res) => {
-      res.json();
-      console.log(res.json());
-    })
-    .then((data) => {
-      console.log(data.msg);
-      const root = document.getElementById("root");
-      root.innerText = data.msg;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
-const sendPostData = () => {
-  const username = req.body.username; //username provided
-  const password = req.body.password; //password provided
-  saveUser(
-    req.body.fname,
-    req.body.lname,
-    req.body.email,
-    req.body.username,
-    req.body.password
-  );
-  // const userId = checkUserId(username);
-  fetch("/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ saveUser }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      const root = document.getElementById("root");
-      root.innerText = data.msg;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
-// const sendGetData = () => {
-//   const email = document.getElementById('email').value;
-//   const password = document.getElementById('password').value;
-//   fetch(`/?email=${email}&password=${password}`)
-//     .then(res=>res.json())
-//     .then(data => {
-//       console.log(data);
-//       const root = document.getElementById('root');
-//       root.innerText = data.msg;
-//     })
-//     .catch(e => {
-//       console.log(e);
-//     })
-// }
 
 function insertBalance(currency) {
   let coinName;
@@ -143,7 +77,7 @@ async function callapi(list1, list2) {
 }
 
 console.log();
-// document.querySelector("#transaction").addEventListener("submit", buy);
+document.querySelector("#transaction").addEventListener("submit", buy);
 function buy(e) {
   e.preventdefault();
   const number = document.getElementById("input_num").value;
@@ -155,14 +89,100 @@ function buy(e) {
     .then((res) => apiResponce.setAttribute("value", res));
 }
 
-// function convert(a, b, number) {
-//   let valOfA = money[a];
-//   let valOfB = money[b];
-//   console.log((valOfA / valOfB) * number);
-// }
-// function btcToEtc() {
-//   //Whatever currency you want to conver to usd
-//   const btcToUsd = 20000; //results from API
-//   const ethToUsd = 14 * btcToUsd; //results from API for currency * results from API for btc usd
-//   return ethToUsd;
-// }
+async function func() {
+  const res = await fetch(`home/userinfo`);
+  const data = await res.json();
+  // console.log(data[0]);
+  return data[0];
+}
+
+function insertBalance(currency) {
+  let coinName;
+  switch (currency) {
+    case "btc":
+      coinName = "Bitcoin";
+      break;
+    case "eth":
+      coinName = "Etherium";
+      break;
+    case "usd":
+      coinName = "US Dollars";
+      break;
+  }
+  func().then((data) => {
+    const parent = document.getElementById(`${currency}b`);
+    let balance = data[`${currency}_balance`];
+    let text = `${coinName} Balance \n ${balance} ${currency.toUpperCase()}`;
+    const textNode = document.createTextNode(text);
+    parent.appendChild(textNode);
+  });
+}
+
+for (let symbol of ["btc", "eth", "usd"]) {
+  insertBalance(symbol);
+}
+
+function convert(a, b) {
+  let valOfA = rateObj[a];
+  let valOfB = rateObj[b];
+  return valOfA / valOfB;
+}
+const sendLogin = (e) => {
+  e.preventdefault();
+  const username = req.body.username; //username provided
+  const password = req.body.password; //password provided
+
+  fetch("/login_fail", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      const root = document.getElementById("root");
+      root.innerText = data.msg;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+const sendPostData = (e) => {
+  e.preventdefault();
+  saveUser(
+    req.body.fname,
+    req.body.lname,
+    req.body.email,
+    req.body.username,
+    req.body.password
+  );
+
+  fetch("/signup_err", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ saveUser }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      const root = document.getElementById("root");
+      root.innerText = data.msg;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+const signupform = document
+  .getElementById("signup")
+  .addEventListener("submit", sendPostData);
+const loginform = document
+  .getElementById("login")
+  .addEventListener("submit", sendLogin);
+function setTwoNumberDecimal(event) {
+  this.value = parseFloat(this.value).toFixed(4);
+}

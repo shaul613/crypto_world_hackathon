@@ -13,16 +13,15 @@ const db = knex({
 
 function addLogin(user, username, success) {
   //checking for login
-  db("login")
-    .insert({
-      user_id: user,
-      provided_username: username,
-      signin_success: success,
-    })
-    .returning("*")
-    .then((data) => {
-      console.log(data);
-    });
+  db("login").insert({
+    user_id: user,
+    provided_username: username,
+    signin_success: success,
+  });
+  // .returning('*')
+  // .then(data => {
+  // console.log(data);
+  // });
 }
 
 function checkUserId(username) {
@@ -34,21 +33,19 @@ function checkPassword(username, password) {
     .select("*")
     .where({ user_name: username })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data[0].password == password;
     });
 }
 
 function saveUser(firstName, lastName, email, username, password) {
-  return db("users")
-    .insert({
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      user_name: username,
-      password: password,
-    })
-    .returning("*");
+  return db("users").insert({
+    first_name: firstName,
+    last_name: lastName,
+    email: email,
+    user_name: username,
+    password: password,
+  });
 }
 
 function getData(user) {
@@ -76,3 +73,4 @@ module.exports = {
   getData,
   updateBalance,
 };
+// Footer;
