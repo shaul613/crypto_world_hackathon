@@ -51,12 +51,13 @@ app.post("/signup", (req, res) => {
     });
 });
 
-app.post("/home", async (req, res) => {
+app.post("/portfolio", async (req, res) => {
+  console.log(req.body);
   const username = req.body.username; //username provided
   const password = req.body.password; //password provided
   let userId = checkUserId(username)
-    .then(async (data) => {
-      console.log(data);
+    .then((data) => {
+      console.log("hi" + data);
       if (data.length == 0) {
         res.json({ msg: "username does not exist" });
       }

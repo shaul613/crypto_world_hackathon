@@ -16,21 +16,23 @@ async function func() {
   // console.log(data[0]);
   return data[0];
 }
-const sendLogin = (e) => {
-  e.preventdefault();
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+const sendLogin = () => {
+  const username = req.body.username; //username provided
+  const password = req.body.password; //password provided
 
-  fetch("/home", {
+  fetch("/portfolio", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ username, password }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      res.json();
+      console.log(res.json());
+    })
     .then((data) => {
-      console.log(data);
+      console.log(data.msg);
       const root = document.getElementById("root");
       root.innerText = data.msg;
     })
@@ -38,8 +40,7 @@ const sendLogin = (e) => {
       console.log(e);
     });
 };
-const sendPostData = (e) => {
-  e.preventdefault();
+const sendPostData = () => {
   const username = req.body.username; //username provided
   const password = req.body.password; //password provided
   saveUser(
@@ -142,8 +143,9 @@ async function callapi(list1, list2) {
 }
 
 console.log();
-document.querySelector("#transaction").addEventListener("submit", buy);
-function buy() {
+// document.querySelector("#transaction").addEventListener("submit", buy);
+function buy(e) {
+  e.preventdefault();
   const number = document.getElementById("input_num").value;
   const list1 = document.getElementById("cryptocode1").value;
   const list2 = document.getElementById("cryptocode2").value;

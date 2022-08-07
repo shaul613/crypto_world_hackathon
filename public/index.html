@@ -9,17 +9,17 @@
     <nav class="navbar-container container">
       <div id="navbar-menu" aria-labelledby="navbar-toggle">
         <ul class="navbar-links">
-          <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+          
           <li id="middle"><h1>Crypto</h1></li>
         </ul>
         <marquee id="livebar"direction="right"></marquee>
       </div> 
     </nav>
     <div id="login_continer">
-      <form id="login" onclick="sendLogin()" action="/home" method="post" class="form">
+      <form id="login" onclick="sendLogin()" action="/portfolio" method="post" class="form">
         <p>
           <label for="username"><h3>Username</h3></label>
-          <input type="text" name="username" value="">
+          <input type="text" id="username" name="username" value="">
         </p>
         <p>
           <label for="password"><h3>Password</h3></label>
