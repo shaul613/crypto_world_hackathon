@@ -1,62 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <nav class="navbar-container container">
-            <div id="navbar-menu" aria-labelledby="navbar-toggle">
-              <ul class="navbar-links">
-                <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
-                <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
-                <li id="middle"><h1>Crypto Currency Simulator</h1></li>
-                <li id="left"><a class="navbar-link" href="/">Logout</a></li>
-              </ul>
-            </div>
-        </nav>
-        <div id="body">
+</head>
+<body>
+    <nav class="navbar-container container">
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
+            <li id="middle"><h1>Crypto</h1></li>
+            <li class="navbar-item" id="left"><a class="navbar-link" href="/logout">Logout</a></li>
+          </ul>
+          <marquee id="livebar"direction="right"></marquee>
+        </div>
+    </nav>
+    <div class="body"class="content">
         <div id="flex_container">
             <h1 id="usdb" class="display"></h1><br>
             <h1 id="btcb" class="display"></h1><br>
             <h1 id="ethb" class="display"></h1><br>
         </div>
-        <section>
-            <form id="transaction" action="/home" method="post">
-                <p>From</p>
-                <select name="crpto1" id="cryptocode1"></select>
-                <!-- <option value="USD">USD</option>
+    <section>
+        <div id="transaction_container" >
+            <form id="transaction" onclick="buy()" action="/transaction" method="post">
+                <p class="transaction">From</p>
+                <select class="transaction" name="crypto1" id="cryptocode1">
+                <option value="USD">USD</option>
                 <option value="BTC">BTC</option>
-                <option value="ETH">ETH</option> -->
-                <p>To</p>
-                <select name="crpto2" id="cryptocode2"></select>
-                <!-- <option value="USD">USD</option>
+                <option value="ETH">ETH</option>
+                </select>
+                <p class="transaction">To</p>
+                <select class="transaction" name="crypto2" id="cryptocode2">
+                <option value="USD">USD</option>
                 <option value="BTC">BTC</option>
-                <option value="ETH">ETH</option> -->
-                <input id="input_num" type="number">
-                <input id="submitbuy" type="button">
+                <option value="ETH">ETH</option>
+                </select><br>
+                <p class="transaction">Amount</p>
+                <input class="transaction" id="input_num" name="base_amount" type="" required>
+
+                <input class="transaction" type="hidden" id="dontdisplay" name="des_amount">
+                <!-- set vaulue = api res -->
+                <button class="transaction"id="submitbuy" type="submit">Submit</button>
             </form>
-        </section>
-        <section>
-
-        </section>
         </div>
-        <script type="text/javascript" src="script.js"></script>
-        <!-- <script src="script.js">-->
-    </body>
-    </html>
+    </section>
 
+    <section>
 
-
-<!-- <h1 id="hello">this is home.html</h1>
-<div id="portfolio" class="">
-  <ul>
-    <li id="usdb"></li>
-    <li id="btcb"></li>
-    <li id="ethb"></li>
-  </ul>
-</div>
-<!--  -->
+    </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
