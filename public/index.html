@@ -10,12 +10,13 @@
       <div id="navbar-menu" aria-labelledby="navbar-toggle">
         <ul class="navbar-links">
           <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
-          <li id="middle"><h1>Crypto Currency Simulator</h1></li>
+          <li id="middle"><h1>Crypto</h1></li>
         </ul>
+        <marquee id="livebar"direction="right"></marquee>
       </div> 
     </nav>
     <div id="login_continer">
-      <form id="login" action="/home" method="post" class="form">
+      <form id="login" onclick="sendLogin()" action="/home" method="post" class="form">
         <p>
           <label for="username"><h3>Username</h3></label>
           <input type="text" name="username" value="">
@@ -27,13 +28,15 @@
         <p>
           <button type="submit" name="button">Log In</button>
         </p>
+        <p id="root"></p>
       </form>
       <br>
       <p>
         <small>Not a member yet?</small>
         <br>
-        <button type="button" name="button"> <a href="/signup">Sign Up</a> </button>
+        <button id="signupbtn" type="button" name="button"> <a href="/signup">Sign Up</a> </button>
       </p>
     </div>
   </body>
+  <script src="script.js"></script>
 </html>

@@ -8,7 +8,9 @@ const {
   checkPassword,
   saveUser,
   getData,
+  updateBalance,
 } = require("./db.js");
+const e = require("express");
 
 const app = express();
 app.use(express.json());
@@ -16,14 +18,19 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", express.static(__dirname + "/public"));
 
-app.listen(5000, () => {
+app.listen(5003, () => {
   console.log("server up and renning...");
 });
 
 app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/public/signup.html");
 });
-app.post("/", (req, res) => {
+
+// app.post('/', (req, res) => {
+//   console.log('posted');
+// })
+
+app.post("/signup", (req, res) => {
   saveUser(
     req.body.fname,
     req.body.lname,
@@ -39,28 +46,64 @@ app.post("/", (req, res) => {
       res.sendFile(__dirname + "/public/index.html");
     })
     .catch((e) => {
-      res.send('Sorry, user already exists <a href="/">go back</a>');
       console.log(e);
+      res.json({ msg: "Email or Username exist" });
     });
 });
 
 app.post("/home", async (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  console.log(password);
-  const userId = checkUserId(username);
-  let success = await checkPassword(username, password);
-  addLogin(userId, username, success);
-  if (success) {
-    console.log("show the page");
-    res.sendFile(__dirname + "/public/home.html");
-  }
+  const username = req.body.username; //username provided
+  const password = req.body.password; //password provided
+  let userId = checkUserId(username)
+    .then(async (data) => {
+      console.log(data);
+      if (data.length == 0) {
+        res.json({ msg: "username does not exist" });
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  let success = await checkPassword(username, password)
+    .then(async (data) => {
+      if (!data) {
+        res.json({ msg: "Wrong Password" });
+      } else {
+        console.log("show the page");
+        res.redirect("/portfolio");
+        app.get("/home/userinfo", (req, res) => {
+          getData(userId).then((data) => {
+            res.json(data).catch((e) => {
+              console.log(e);
+            });
+          });
+        });
+      }
+    })
+    .catch((e) => {
+      // res.json({ msg: "Wrong Password" });
+      console.log(e);
+    });
 });
 
-app.get("/home/:id", (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  getData(id).then((data) => {
-    res.json(data);
-  });
+// .catch((e) => {
+//   // res.json({ msg: "Wrong Password" });
+//   console.log(e);
+// });
+
+// app.get('/home/:id', (req, res) => {
+//   const id = req.params.id;
+//   getData(id)
+//   .then(data => {
+//     res.json(data);
+//   })
+// })
+
+app.get("/portfolio", (req, res) => {
+  res.sendFile(__dirname + "/public/home.html");
 });
+
+// app.post('/page', (req, res) => {
+//   const basecur = req.body.["the name attribute in the form"];
+//   updateBalance()
+// })

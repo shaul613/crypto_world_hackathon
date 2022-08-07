@@ -11,12 +11,11 @@
     <nav class="navbar-container container">
         <div id="navbar-menu" aria-labelledby="navbar-toggle">
           <ul class="navbar-links">
-            
-            <li class="navbar-item"><a class="navbar-link" href="/careers">Careers</a></li>
             <li class="navbar-item"><a class="navbar-link" href="/contact">Contact</a></li>
-            <li id="middle"><h1>Crypto Currency Simulator</h1></li>
+            <li id="middle"><h1>Crypto</h1></li>
             <li class="navbar-item" id="left"><a class="navbar-link" href="/">Logout</a></li>
           </ul>
+          <marquee id="livebar"direction="right"></marquee>
         </div>
     </nav>
     <div class="body"class="content">
@@ -27,7 +26,7 @@
         </div>
     <section>
         <div id="transaction_container" >
-            <form id="transaction" action="/home" method="post">
+            <form id="transaction"onclick="buy()" action="/home" method="post">
                 <p class="transaction">From</p>
                 <select class="transaction" name="crypto1" id="cryptocode1">
                 <option value="USD">USD</option>
@@ -45,7 +44,7 @@
     
                 <input class="transaction" type="hidden" id="dontdisplay" name="des_amount">
                 <!-- set vaulue = api res -->
-                <button class="transaction"id="submitbuy" type="submit">submit</button>
+                <button class="transaction"id="submitbuy" type="submit">Submit</button>
             </form>
         </div>
     </section>

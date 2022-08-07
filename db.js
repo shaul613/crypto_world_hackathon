@@ -38,14 +38,7 @@ function checkPassword(username, password) {
       return data[0].password == password;
     });
 }
-function updatewallet(list1, list2) {
-  return db("users")
-    .update(`${list1}_balance`, `${list2}_balance`)
-    .where()
-    .then((data) => {
-      console.log(data);
-    });
-}
+
 function saveUser(firstName, lastName, email, username, password) {
   return db("users")
     .insert({
@@ -58,9 +51,21 @@ function saveUser(firstName, lastName, email, username, password) {
     .returning("*");
 }
 
-function getData(poi) {
-  console.log(poi);
-  return db("users").select("*").where({ user_id: poi });
+function getData(user) {
+  console.log(user);
+  return (
+    db("users")
+      // .select('btc_balance', 'eth_balance', 'usd_balance')
+      .select("*")
+      .where({ user_id: user })
+  );
+}
+
+function updateBalance(base, desired, baseAmount, desAmount, user) {
+  return db("users").where({ user_id: user }).update({
+    base: baseAmount,
+    desired: desAmount,
+  });
 }
 
 module.exports = {
@@ -69,4 +74,5 @@ module.exports = {
   checkPassword,
   saveUser,
   getData,
+  updateBalance,
 };

@@ -2,6 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Times New Roman", Times, serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 body{
     /* box-sizing: border-box;
@@ -14,7 +16,7 @@ nav{
     background-color:#19889C;
     display: flex;
     flex-direction: row ;
-    height: 100px;
+    height: 80px;
     
 }
 ul{
@@ -36,7 +38,7 @@ ul{
     align-items: center;
     /* justify-content: center; */
     
-    padding-top: 30px;
+    padding-top: 10px;
     padding-right:25px;
     padding-left:25px;
     list-style: none;
@@ -46,17 +48,18 @@ ul{
 .navbar-item:hover{
     /* margin-top: 20px; */
 /* padding: 20px; */
-padding-top: 32px;
-    height: 100px;
+/* padding-top: 32px; */
+    height: 80px;
     color: white;
     background-color: darkblue;
 }
 #middle{
-    margin-top: 30px;
+    margin-top: 10px;
     position: relative;
-    margin-left: 10vw;
+    margin-left: 30vw;
     list-style: none;
     font-size: 28px;
+    margin-bottom:10px ;
     
     
     text-decoration:none;
@@ -64,9 +67,10 @@ padding-top: 32px;
 #left{
     text-decoration:none;
     position: relative;
+    
     list-style: none;
     /* height: 90px; */
-    margin-left: 10vw;
+    margin-left: 25vw;
     /* padding: 5px; */
     /* margin-top: 1px; */
 
@@ -129,8 +133,27 @@ padding-top: 32px;
     /* background-color: rgba(229, 109, 11, 0.7); */
     /* background-color: rgba(240, 128, 128, 0.808); */
 }
+#signup_continer p{
+    padding: 10px;
+}
+form p{
+    padding: 5px;
+}
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+
+
 #signup_continer{
-    padding: 50px;
+    padding: 20px;
     color: white;
     display: block;
     margin-top: 20vh;
@@ -142,10 +165,10 @@ padding-top: 32px;
 }
 #transaction_container{
     
-    padding: 50px;
+    padding: 10px;
     color: white;
     display: block;
-    margin-top: -50px;
+    margin-top: -40px;
     margin-left: 37vw;
     margin-right: 37vw;
     background-color: #12101cbe;
@@ -156,7 +179,7 @@ padding-top: 32px;
     display: flex;
     padding-top: 10px;
     padding: 50px;
-    margin-top: 50px;
+    margin-top: 75px;
     width: 95vw;
     height: 250px;
     gap: 10px;
@@ -206,4 +229,15 @@ display: none;
     border:solid 500px black,;
     border-radius: 20;
     /* margin-bottom: -55px; */
+}
+#livebar{
+    background-color:lightsalmon;
+    /* background-color: rgb(73, 128, 162); */
+    display: inline-block;
+    position: absolute;
+    /* margin-top: -5px; */
+    width: 100%;
+    height: 34px;
+    font-size: 35px;
+    /* padding-top: -15px; */
 }
