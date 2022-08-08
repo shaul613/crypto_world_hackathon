@@ -7,7 +7,7 @@ window.onscroll = function () {
     navbar.classList.remove("sticky");
   }
 };
-// callapinavbar();
+callapinavbar();
 const livenavbar = document.getElementById("livebar");
 
 async function func() {
